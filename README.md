@@ -37,7 +37,7 @@ To add a task, use `trix [task description]`:
 
 ### List Your Tasks
 
-Listing your tasks is even easier -- just use `t`:
+Listing your tasks is even easier -- just use `trix`:
 
     $ trix
     5  - Hello World.
