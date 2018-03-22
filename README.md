@@ -1,5 +1,4 @@
-# trix
-A simple and elegant command-line todo list
+# trix - A simple and elegant command-line todo list
 ------------
 Installing trix
 ------------
