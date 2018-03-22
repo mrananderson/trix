@@ -8,6 +8,7 @@ import sys
 import hashlib
 from operator import itemgetter
 from optparse import OptionParser, OptionGroup
+from colors import Trixcolors as trixcolors
 
 
 class InvalidTaskfile(Exception):
@@ -233,10 +234,16 @@ class TaskDict(object):
 
         plen = max(map(lambda t: len(t[label]),
                        tasks.values())) if tasks else 0
+
+        def color_print(p, task):
+            """Add effective color style to tasks list"""
+            print(trixcolors.UNDERLINE+trixcolors.WARNING + p +
+                      trixcolors.ENDC, trixcolors.OKBLUE+task+trixcolors.ENDC)
+
         for _, task in sorted(tasks.items()):
             if grep.lower() in task['text'].lower():
-                p = '%s - ' % task[label].ljust(plen) if not quiet else ''
-                print(p + task['text'])
+                p = '<%s> - ' % task[label].ljust(plen) if not quiet else ''
+                color_print(p, task['text'])
 
     def write(self, delete_if_empty=False):
         """Flush the finished and unfinished tasks to the files on disk."""
